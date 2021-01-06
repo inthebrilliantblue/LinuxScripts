@@ -6,4 +6,5 @@
     Required inputs: 
     **dl-virtio-drivers.sh *"stabledir"* *"latestdir"***
     
-    Requirements: wget curl
+    Requirements: 
+    **wget curl**

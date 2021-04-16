@@ -1,8 +1,10 @@
 #!/bin/bash
-echo 'Installing docker...'
+echo 'Installing Docker...'
 sudo apt install docker docker.io -y
+
 echo 'Adding user to docker group...'
 sudo usermod -aG docker $USER
+
 echo 'Setting up portainer...'
 docker pull portainer/portainer-ce:latest
 docker volume create portainer_data
@@ -13,4 +15,5 @@ docker run -d \
   -v portainer_data:/data \
   --restart always \
   portainer/portainer-ce:latest
-echo 'Done!'
+
+echo 'Installing Docker - Done!'

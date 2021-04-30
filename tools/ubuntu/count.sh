@@ -1,7 +1,14 @@
 #!/bin/bash
+#First determine location
+if [ "$1" != "" ]; then
+    LOC="$1"
+else
+    echo "Using current working location: $PWD"
+    LOC="$PWD"
+fi
 #Count files
-FILES=$(find "$1" -type f | wc -l)
+FILES=$(find "$LOC" -type f | wc -l)
 echo "Files:            $FILES"
 #Count Directories
-DIR=$(find "$1" -type d | wc -l)
+DIR=$(find "$LOC" -type d | wc -l)
 echo "Directories:      $DIR"

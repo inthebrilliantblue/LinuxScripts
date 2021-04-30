@@ -1,10 +1,10 @@
 #!/bin/bash
 #First determine location
 if [ "$1" != "" ]; then
-    LOC="$1"
+        LOC="$1"
 else
-    echo "Using current working location: $PWD"
-    LOC="$PWD"
+        echo "Using current working location: $PWD"
+        LOC="$PWD"
 fi
 #Count files
 FILES=$(find "$LOC" -type f | wc -l)

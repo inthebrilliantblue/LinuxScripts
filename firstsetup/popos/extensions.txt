@@ -1,0 +1,5 @@
+In the newest version of gnome I have noticed that it hides the workspaces panel if you only have one space open. Use this extension to force it to stay open.
+
+https://extensions.gnome.org/extension/503/always-zoom-workspaces/
+
+I have only seen this issue in PopOS 21.04 after undoing the Cosmic DE that system76 is using.

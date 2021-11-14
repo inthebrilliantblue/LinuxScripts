@@ -8,20 +8,10 @@ NC="\033[0m" # No Color
 #Check for the software-properties-common package
 sudo apt install software-properties-common -y
 
-#We need to add this temp ppa for adcli 0.9.0.1 which fixes issues in eoan
-#But ask if we want this first.
-read -p "Do we need the PPA for adcli? (y/n)" -n 1 -r
-echo ""
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	echo "Adding ppa for adcli temp fix..."
-	sudo add-apt-repository ppa:aroth/ppa -y
-fi
-
 #Update system
 echo 'Updating your system...'
-apt-get update
-apt-get upgrade -y --allow-downgrades
+sudo apt-get update
+sudo apt-get upgrade -y --allow-downgrades
 
 #Get some input on the domain we are joining
 read -p "Enter domain name (EX: example.com): " DOMAIN
@@ -61,23 +51,23 @@ echo "search ${LCDOMAIN}" >> /etc/resolv.conf
 
 #Now we need to install everything needed to join Active Directory Domain
 echo "Installing everything needed to join to an Active Directory Domain"
-apt-get install acl attr krb5-user samba samba-common-bin sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli policykit-1 packagekit samba-vfs-modules samba-libs samba-dsdb-modules ssh -y
+sudo apt-get install acl attr krb5-user samba samba-common-bin sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli policykit-1 packagekit samba-vfs-modules samba-libs samba-dsdb-modules ssh winbind -y
 
 #Add the domain name to the ntp servers list
 echo "Adding 'server ${LCDOMAIN}' to /etc/ntp.conf"
 sed -i "1i server ${LCDOMAIN}" /etc/ntp.conf
 
 #Do a system time update
-echo "Stopping ntp..."
+sudo echo "Stopping ntp..."
 systemctl stop ntp
 echo "Updating system time from the domain..."
-ntpdate $LCDOMAIN
+sudo ntpdate $LCDOMAIN
 echo "Starting ntp..."
-systemctl start ntp
+sudo systemctl start ntp
 
 #Now discover the realm
 echo "Discovering realm ${UCDOMAIN}..."
-realm discover "${UCDOMAIN}"
+sudo realm discover "${UCDOMAIN}"
 
 #KINIT the user to join the domain
 echo -e "\n${RED}!!!${NC} Please provide password for KINIT Ticket ${RED}!!!${NC}"
@@ -85,7 +75,7 @@ kinit "${USERNAME}@${UCDOMAIN}"
 
 #Now join the domain
 echo -e "\n${RED}!!!${NC} Join the Realm, input ${USERNAME}@${UCDOMAIN}'s password ${RED}!!!${NC}"
-realm join --verbose "${UCDOMAIN}" -U "${USERNAME}@${UCDOMAIN}" --install=/
+sudo realm join --verbose "${UCDOMAIN}" -U "${USERNAME}@${UCDOMAIN}" --install=/
 
 #Create the realmd.conf file
 echo '[users]' > /etc/realmd.conf

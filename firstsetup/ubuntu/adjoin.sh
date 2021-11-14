@@ -146,7 +146,7 @@ sed -i "/.*pam_sss.so/a session required pam_mkhomedir.so skel=\/etc\/skel\/ uma
 
 #Add Domain Admins to sudoers
 echo "Adding Domain Admins to sudoers..."
-echo "%domain\ admins@buchanan.rocks ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+echo "%domain\ admins@${LCDOMAIN} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 echo "%domain\ admins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 #Setup samba config file

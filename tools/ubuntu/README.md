@@ -8,3 +8,8 @@
  - sshkeygen.sh host username
  - host is required
  - username is not required, defaults to currently logged in user. Set username if it is different on remote host.
+
+**listzfs.sh**
+
+ - Lists zfs datasets with some extra information
+ - Lists zpools

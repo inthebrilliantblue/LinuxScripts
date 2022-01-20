@@ -4,9 +4,9 @@
 sudo mkdir /cusbin
 
 #Update system wide PATH to include custom scripts and bins
-sudo echo "" >> /etc/profile
-sudo echo "#Add custom scripts and bins" >> /etc/profile
-sudo echo "export PATH=$PATH:/cusbin" >> /etc/profile
+echo "" | sudo tee -a /etc/profile
+echo "#Add custom scripts and bins" | sudo tee -a /etc/profile
+echo "export PATH=$PATH:/cusbin" | sudo tee -a /etc/profile
 
 #Copy github scripts to /cusbin
 cd /cusbin

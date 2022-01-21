@@ -1,18 +1,13 @@
 #!/bin/bash
 
-#Create the custom bin folder
-sudo mkdir /cusbin
+#Set bin folder to download to that is in PATH
+DL="/usr/local/bin"
 
-#Update system wide PATH to include custom scripts and bins
-echo "" | sudo tee -a /etc/profile
-echo "#Add custom scripts and bins" | sudo tee -a /etc/profile
-echo "export PATH=$PATH:/cusbin" | sudo tee -a /etc/profile
-
-#Copy github scripts to /cusbin
-cd /cusbin
+#Copy github scripts to $DL
+cd "${DL}"
 sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/listzfs.sh
 sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/sshkeygen.sh
 sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/count.sh
 
 #Set permissions
-sudo chmod -R 755 /cusbin
+sudo chmod -R 755 "${DL}"

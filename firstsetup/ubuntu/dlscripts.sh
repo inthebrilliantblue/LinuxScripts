@@ -5,9 +5,13 @@ DL="/usr/local/bin"
 
 #Copy github scripts to $DL
 cd "${DL}"
-sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/listzfs.sh
-sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/sshkeygen.sh
-sudo wget https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/count.sh
+sudo wget -O "${DL}/listzfs.sh" https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/listzfs.sh
+sudo wget -O "${DL}/sshkeygen.sh" https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/sshkeygen.sh
+sudo wget -O "${DL}/count.sh" https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/count.sh
 
 #Set permissions
-sudo chmod -R 755 "${DL}"
+sudo chmod -R +x "${DL}"
+
+#Download self to update
+sudo wget -O "${DL}/dlscripts.sh" https://github.com/inthebrilliantblue/LinuxScripts/raw/main/firstsetup/ubuntu/dlscripts.sh
+sudo chmod +x "${DL}/dlscripts.sh"

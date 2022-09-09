@@ -168,7 +168,7 @@ echo "	server string = ${HOSTNAME} server" >> /etc/samba/smb.conf
 echo "" >> /etc/samba/smb.conf
 
 echo "#Tweaks" >> /etc/samba/smb.conf
-echo "	allocation roundup size = 4096" >> /etc/samba/smb.conf
+echo "#	allocation roundup size = 4096" >> /etc/samba/smb.conf
 echo "	server multi channel support = yes" >> /etc/samba/smb.conf
 echo "" >> /etc/samba/smb.conf
 

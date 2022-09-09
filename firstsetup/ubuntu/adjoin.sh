@@ -28,17 +28,7 @@ read -p "Enter hostname you wish to use for this computer (This will change /etc
 echo "Changing hosts file to point to hostname and localhost..."
 #sed -i "1s/.*/127.0.0.1	${HOSTNAME}.${LCDOMAIN} ${HOSTNAME} localhost/" /etc/hosts
 echo "127.0.0.1	localhost" > /etc/hosts
-
-#Check if we want a static IPv4 address in /etc/hosts
-#read -p "Are you going to use a static IPv4 on this box? (y/n)" -n 1 -r
-#echo ""
-#if [[ $REPLY =~ ^[Yy]$ ]]
-#then
-#	read -p "    Input IPv4 address: " STATICIP
-#	echo "$STATICIP	$HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
-#else
-	echo "127.0.1.1 $HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
-#fi
+echo "127.0.1.1 $HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
 
 #Change the hostname of computer
 echo "Changing hostname..."
@@ -236,6 +226,10 @@ sudo realm permit --all
 #Now enable the winbind service
 sudo systemctl start winbind
 sudo systemctl enable winbind
+
+#Disable nmbd, we do not need it
+sudo systemctl stop nmbd
+sudo systemctl disable nmbd
 
 #Now try to ssh to localhost with the user to test the join
 echo "Now SSHing to localhost using ${USERNAME}..."

@@ -30,15 +30,15 @@ echo "Changing hosts file to point to hostname and localhost..."
 echo "127.0.0.1	localhost" > /etc/hosts
 
 #Check if we want a static IPv4 address in /etc/hosts
-read -p "Are you going to use a static IPv4 on this box? (y/n)" -n 1 -r
-echo ""
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	read -p "    Input IPv4 address: " STATICIP
-	echo "$STATICIP	$HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
-else
+#read -p "Are you going to use a static IPv4 on this box? (y/n)" -n 1 -r
+#echo ""
+#if [[ $REPLY =~ ^[Yy]$ ]]
+#then
+#	read -p "    Input IPv4 address: " STATICIP
+#	echo "$STATICIP	$HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
+#else
 	echo "127.0.1.1 $HOSTNAME.$LCDOMAIN $HOSTNAME" >> /etc/hosts
-fi
+#fi
 
 #Change the hostname of computer
 echo "Changing hostname..."
@@ -232,6 +232,10 @@ sudo systemctl enable realmd sssd smbd
 #Allow all users from the domain to login
 echo 'Allow all domain users to access this server.'
 sudo realm permit --all
+
+#Now enable the winbind service
+sudo systemctl start winbind
+sudo systemctl enable winbind
 
 #Now try to ssh to localhost with the user to test the join
 echo "Now SSHing to localhost using ${USERNAME}..."

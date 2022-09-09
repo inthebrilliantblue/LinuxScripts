@@ -174,7 +174,6 @@ echo "" >> /etc/samba/smb.conf
 
 echo "#Add useful vfs objects" >> /etc/samba/smb.conf
 echo "	vfs objects = acl_xattr recycle aio_pthread" >> /etc/samba/smb.conf
-echo "#	vfs objects = recycle aio_pthread" >> /etc/samba/smb.conf
 echo "	recycle:repository = recyclebin" >> /etc/samba/smb.conf
 echo "	recycle:keeptree = yes" >> /etc/samba/smb.conf
 echo "	recycle:versions = yes" >> /etc/samba/smb.conf

@@ -5,6 +5,11 @@ printf "ZFS Datasets\n"
 zfs list -r -t filesystem -o name,used,refer,avail,recordsize,compressratio,compression,sync,mountpoint,primarycache,secondarycache,dedup,sharenfs
 printf "\n"
 
+#List encrypted dataset values
+printf "ZFS Encrypted Datasets\n"
+zfs list -r -t filesystem -o name,keystatus,encryption,mounted | grep -v " - "
+printf "\n"
+
 #List ZVOLs
 printf "ZFS ZVOLs\n"
 zfs list -r -t volume -o name,used,refer,avail,volsize,volblocksize,compressratio,compression,logbias,sync,primarycache,secondarycache,dedup

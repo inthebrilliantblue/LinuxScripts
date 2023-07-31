@@ -7,7 +7,7 @@ printf "\n"
 
 #List encrypted dataset values
 printf "ZFS Encrypted Datasets\n"
-zfs list -r -t filesystem -o name,keystatus,keylocation,encryption,mounted | grep -v " - "
+zfs list -r -t filesystem -o name,keystatus,keylocation,keyformat,encryption,mounted | grep -v " - "
 printf "\n"
 
 #List ZVOLs

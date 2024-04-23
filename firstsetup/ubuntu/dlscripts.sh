@@ -11,7 +11,8 @@ rm "${DL}/sshkeygen.sh"
 sudo wget --no-check-certificate --no-cache --no-cookies -O "${DL}/sshkeygen.sh" https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/sshkeygen.sh
 rm "${DL}/count.sh"
 sudo wget --no-check-certificate --no-cache --no-cookies -O "${DL}/count.sh" https://raw.githubusercontent.com/inthebrilliantblue/LinuxScripts/main/tools/ubuntu/count.sh
-
+rm "${DL}/convert-ziptocbz.sh"
+sudo wget --no-check-certificate --no-cache --no-cookies -O "${DL}/convert-ziptocbz.sh" https://github.com/inthebrilliantblue/LinuxScripts/raw/main/tools/ubuntu/convert-ziptocbz.sh
 #Set permissions
 sudo chmod -R +x "${DL}"
 

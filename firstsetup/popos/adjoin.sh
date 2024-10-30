@@ -106,6 +106,7 @@ echo "	services = nss, pam, ssh" >> /etc/sssd/sssd.conf
 echo "" >> /etc/sssd/sssd.conf
 echo "[domain/$LCDOMAIN]" >> /etc/sssd/sssd.conf
 echo "	default_shell = /bin/bash" >> /etc/sssd/sssd.conf
+echo "	timeout = 30" >> /etc/sssd/sssd.conf
 echo "	krb5_store_password_if_offline = True" >> /etc/sssd/sssd.conf
 echo "	cache_credentials = True" >> /etc/sssd/sssd.conf
 echo "	krb5_realm = $UCDOMAIN" >> /etc/sssd/sssd.conf

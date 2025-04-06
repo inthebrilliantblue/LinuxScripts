@@ -25,6 +25,11 @@ else
 	zfs list -r -t filesystem -o name,used,refer,avail,recordsize,compressratio,compression,sync,mountpoint,primarycache,secondarycache,dedup,sharenfs $DATASET
 	printf "\n"
 
+        #List reservations and quotas
+        printf "ZFS Quotas, Reservations, ETC...\n"
+        zfs list -r -t filesystem -o name,quota,reservation,used,refer,avail $DATASET
+        printf "\n"
+
 	#List encrypted dataset values
 	printf "ZFS Encrypted Datasets\n"
 	zfs list -r -t filesystem -o name,keystatus,keylocation,keyformat,encryption,mounted $DATASET | grep -v " - "

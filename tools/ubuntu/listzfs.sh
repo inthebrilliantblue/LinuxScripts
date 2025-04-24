@@ -20,15 +20,15 @@ if [ $SNAPSHOTCOUNTS ]; then
 	zfs list  -t snapshot -o name -s name -r -H $DATASET | sed 's/@.*//' | uniq -c | head
 else
 	#Show default data
-	#List datasets
-	printf "ZFS Datasets\n"
-	zfs list -r -t filesystem -o name,used,refer,avail,recordsize,compressratio,compression,sync,mountpoint,primarycache,secondarycache,dedup,sharenfs $DATASET
-	printf "\n"
-
-        #List reservations and quotas
-        printf "ZFS Quotas, Reservations, ETC...\n"
-        zfs list -r -t filesystem -o name,quota,reservation,used,refer,avail $DATASET
+ 	#List reservations and quotas
+        printf "ZFS Dataset Info\n"
+        zfs list -r -t filesystem -o name,sync,mountpoint,primarycache,secondarycache,dedup,sharenfs $DATASET
         printf "\n"
+	
+	#List datasets
+	printf "ZFS Dataset Storage Info\n"
+	zfs list -r -t filesystem -o name,quota,reservation,used,refer,avail,recordsize,compressratio,compression $DATASET
+	printf "\n"
 
 	#List encrypted dataset values
 	printf "ZFS Encrypted Datasets\n"
